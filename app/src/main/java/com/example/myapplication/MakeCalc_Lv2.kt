@@ -1,19 +1,30 @@
 package com.example.myapplication
 
 fun main() {
+    while(true){
+        try{
+            println("0.종료 1.덧셈 2.뺄셈 3.곱셈 4.나눗셈 5.나머지")
+            print("어떤 연산을 수행하겠습니까?(숫자로 입력해주세요.): ")
+            var op = readLine()!!.toInt()  //수행할 연산 번호를 입력한다.
+            if(op == 0){
+                print("계산기를 종료합니다.")
+                break
+            }
 
-    print("첫 번째 숫자를 입력해주세요: ")
-    var num1 = readLine()!!.toInt() // 첫번째 숫자를 입력받는다.
+            print("첫 번째 숫자를 입력해주세요: ")
+            var num1 = readLine()!!.toInt() // 첫번째 숫자를 입력받는다.
 
-    print("두 번째 숫자를 입력해주세요: ")
-    var num2 = readLine()!!.toInt() // 두번째 숫자를 입력받는다.
+            print("두 번째 숫자를 입력해주세요: ")
+            var num2 = readLine()!!.toInt() // 두번째 숫자를 입력받는다.
 
-    println("1.덧셈 2.뺄셈 3.곱셈 4.나눗셈 5.나머지")
-    print("어떤 연산을 수행하겠습니까?(숫자로 입력해주세요.): ")
-    var op = readLine()!!.toInt()  //수행할 연산 번호를 입력한다.
+            var calc = Calculator2(num1, num2, op) // Calculator 클래스를 선언한다.
+            println("연산 결과는 ${calc.operation()}입니다.") // 연산 결과를 출력한다.
+        }
+        catch (e:java.lang.NumberFormatException){
+            println("숫자를 입력하세요!")
+        }
 
-    var calc = Calculator2(num1, num2, op)
-    print("연산 결과는 ${calc.operation()}입니다.")
+    }
 }
 
 class Calculator2(n1: Int, n2: Int, k:Int){
